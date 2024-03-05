@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build:
+      dockerfile: Dockerfile.local
+    volumes:
+      - .:/src
+      - /./node_modules
+    ports:
+      - ${PORT}:3000
+    environment:
+      - NODE_ENV=development
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: npm run start:dev
+networks:
+  default:
+    name: localdb_default
+    external: true
