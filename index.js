@@ -23,6 +23,9 @@ app.get('/', (req, res) => {
   res.send('ok');
 });
 require('./routes/auth')(app);
+require('./routes/business')(app);
+require('./routes/message')(app);
+require('./routes/product')(app);
 require('./models');
 
 const port = 3000;

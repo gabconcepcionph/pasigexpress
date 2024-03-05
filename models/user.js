@@ -8,7 +8,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     generateJwtToken( expiresIn = '1h') {
-      return jwt.sign({email: this.email}, process.env.SECRET_KEY, { expiresIn });
+      return jwt.sign({email: this.email, id: this.id}, process.env.SECRET_KEY, { expiresIn });
     }
     async validPassword(password) {
       
